@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentines</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+    body {
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: "Courgette", serif;
+  font-weight: 400;
+  font-style: normal;
+    }
+
+input#open {
+    display: none;
+  }
+  
+  .valentines-day-card {
+    position: relative;
+    width: 340px;
+    height:370px;
+    transform-style: preserve-3d;
+      transform: perspective(2500px);
+    transition: .3s;
+  }
+  
+  .card-front {
+    position: relative;
+    background-color: #fff0f3;
+    width: 340px;
+    height:370px;
+    transform-origin: left;
+    box-shadow: inset 100px 20px 100px rgba(0,0,0,.15), 30px 0 50px rgba(0,0,0,0.3);
+    transition: .3s;
+
+  }
+  .cloud {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(white, #f0f0f0);
+      border-top-left-radius: 50% 50px;
+      border-top-right-radius: 50% 50px;
+    }
+  
+    .heart-fly {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 30px;
+      animation: fly 6s linear infinite;
+      z-index: 30;
+    }
+
+  .card-front:before {
+    content:"";
+    position: absolute;
+    width: 320px;
+    height:350px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    top: 10px;
+    left: 10px;
+    text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .card-inside {
+    position: absolute;
+    background-color: #fff0f3;
+    width: 340px;
+    height:370px;
+    z-index:-1;
+    left:0;
+    top:0;
+    box-shadow: inset 100px 20px 100px rgba(0,0,0,0.22), 100px 20px 100px rgba(0,0,0,0.1);
+  }
+
+  .card-inside img{
+	width: 70%;
+    height: auto;
+    max-height: 400px;
+	object-fit: contain;
+	margin: auto;
+
+}
+  
+  .open {
+    position: absolute;
+    width: 340px;
+    height:370px;
+    left:0;
+    top:0;
+    background-color: transparent;
+    z-index:6;
+    cursor: pointer;
+  }
+  
+  #open:checked ~ .card-front {
+    transform: rotateY(-155deg);
+    box-shadow: inset 100px 20px 100px rgba(0,0,0,.13), 30px 0 50px rgba(0,0,0,0.1);
+  }
+  
+  #open:checked ~ .card-front:before {
+    z-index:5;
+    background-color: #fff0f3;
+    width: 340px;
+    height:370px;
+    top:0;
+    left:0;
+    box-shadow: inset 100px 20px 100px rgba(0,0,0,.1), 30px 0 50px rgba(0,0,0,0.1);
+  }
+
+
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .heart-fly {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 30px;
+      animation: fly 6s linear infinite;
+      z-index:-1;
+    }
+
+    .note {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-color: #fff0f3;
+  top:75px;
+  left:75px;
+  color: #333;
+  font-size:30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.note:before, .note:after {
+  position: absolute;
+  content:"";
+  background-color: #ba1c1c;
+  width: 40px;
+  height:40px;
+}
+
+.note:before {
+  transform: rotate(-45deg);
+  top:-20px;
+  left:80px;
+}
+
+.note:after {
+  border-radius:50%;
+  top:-35px;
+  left:65px;
+  box-shadow:30px 0 #ba1c1c;
+}
+
+.text-one {
+  position: absolute;
+  font-size: 30px;
+  color: #b30f0f;
+  top:30px;
+  left: 20px;
+  width:300px;
+  text-align: center;
+}
+
+.text-one:before, .text-one:after {
+  position: absolute;
+  left:5px;
+  text-align: center;
+  width:300px;
+}
+
+
+
+
+    @keyframes fly {
+      0% {
+        transform: translateY(100%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+    }
+
+</style>
+</head>
+<body>
+    <div class="valentines-day-card" id="valentines-day-card" onclick="toggleCard()">
+        <input id="open" type="checkbox">
+        <label class="open" for="open"></label>
+      <div class="card-front" id="card-front" >
+        <div class="note">Will you be my Valentine Khoa?</div>
+        <div class="cloud"></div>
+      </div>
+        
+        <div class="card-inside" >
+          <div class="text-one">I'm the happiest guy in the world. I love you the mostest
+            <img src="https://media.tenor.com/SoHUEPDwxTcAAAAi/valentines-love.gif" alt=""/>
+          </div>
+      </div>
+      </div>
+
+
+
+      <script>
+
+let interval;
+let heartsShouldRun = true;
+// let heart = document.createElement('div');
+
+function toggleCard() {
+  if(heartsShouldRun){
+  heartsShouldRun=false;
+  } 
+
+
+      // if (heartsShouldRun) {
+      //   interval = setInterval(() => {
+      //     const heart = document.createElement('div');
+      //     heart.innerHTML = '❤️';
+      //     heart.classList.add('heart-fly');
+      //     heart.style.left = Math.random() * 300 + 'px';
+      //     heart.style.bottom = '50px';
+      //     heart.style.zIndex = 9;
+      //     heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+      //     document.getElementById('valentines-day-card').appendChild(heart);
+      //     setTimeout(() => heart.remove(), 6000);
+      //   }, 300);
+      // } else {
+      //   clearInterval(interval);
+      // }
+    }
+
+
+        function createHeart() {
+          const heart = document.createElement('div');
+          const front = document.getElementById('valentines-day-card');
+          if (heartsShouldRun) {
+          heart.innerHTML = '❤️';
+          heart.classList.add('heart-fly');
+          heart.style.left = Math.random() * 300 + 'px';
+          heart.style.bottom = '50px';
+          heart.style.zIndex = 9;
+          heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+
+          front.appendChild(heart);
+          setTimeout(() => heart.remove(), 6000);
+          } else {
+            front.querySelectorAll('.heart-fly').forEach(heart => heart.remove());
+          }
+
+        }
+        //if (heartsShouldRun) {
+          setInterval(createHeart, 300);
+
+       // } 
+      </script>
+</body>
+</html>
