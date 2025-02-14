@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valentines</title>
+  <title>Valentinskarte</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
     body {
@@ -111,7 +111,7 @@ input#open {
   }
   
   #open:checked ~ .card-front:before {
-    z-index:5;
+    z-index:10;
     background-color: #fff0f3;
     width: 340px;
     height:370px;
@@ -179,7 +179,7 @@ input#open {
 
 .text-one {
   position: absolute;
-  font-size: 30px;
+  font-size: 23px;
   color: #b30f0f;
   top:30px;
   left: 20px;
@@ -194,6 +194,22 @@ input#open {
   width:300px;
 }
 
+.text-two {
+  position: absolute;
+  font-size: 20px;
+  color: #fff0f3;
+  top:30px;
+  left: 20px;
+  width:300px;
+  text-align: center;
+}
+
+.text-two:before, .text-two:after {
+  position: absolute;
+  left:5px;
+  text-align: center;
+  width:300px;
+}
 
 
 
@@ -215,12 +231,12 @@ input#open {
         <input id="open" type="checkbox">
         <label class="open" for="open"></label>
       <div class="card-front" id="card-front" >
-        <div class="note">Will you be my Valentine Khoa?</div>
-        <div class="cloud"></div>
+        <div class="note" id="">Will you be my Valentine Khoa?</div>
+        <div class="cloud" id="cloud"></div>
       </div>
         
         <div class="card-inside" >
-          <div class="text-one">I'm the happiest guy in the world. I love you the mostest
+          <div class="text-one">You opened it so it's a binding contract now! <br> I'm so happy for having the most amazing girlfried. I love you the mostest!
             <img src="https://media.tenor.com/SoHUEPDwxTcAAAAi/valentines-love.gif" alt=""/>
           </div>
       </div>
@@ -232,36 +248,18 @@ input#open {
 
 let interval;
 let heartsShouldRun = true;
-// let heart = document.createElement('div');
 
 function toggleCard() {
   if(heartsShouldRun){
   heartsShouldRun=false;
   } 
 
-
-      // if (heartsShouldRun) {
-      //   interval = setInterval(() => {
-      //     const heart = document.createElement('div');
-      //     heart.innerHTML = '❤️';
-      //     heart.classList.add('heart-fly');
-      //     heart.style.left = Math.random() * 300 + 'px';
-      //     heart.style.bottom = '50px';
-      //     heart.style.zIndex = 9;
-      //     heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
-      //     document.getElementById('valentines-day-card').appendChild(heart);
-      //     setTimeout(() => heart.remove(), 6000);
-      //   }, 300);
-      // } else {
-      //   clearInterval(interval);
-      // }
     }
 
 
         function createHeart() {
           const heart = document.createElement('div');
-          const front = document.getElementById('valentines-day-card');
-          if (heartsShouldRun) {
+          const front = document.getElementById('cloud');
           heart.innerHTML = '❤️';
           heart.classList.add('heart-fly');
           heart.style.left = Math.random() * 300 + 'px';
@@ -271,15 +269,11 @@ function toggleCard() {
 
           front.appendChild(heart);
           setTimeout(() => heart.remove(), 6000);
-          } else {
-            front.querySelectorAll('.heart-fly').forEach(heart => heart.remove());
+
           }
 
-        }
-        //if (heartsShouldRun) {
           setInterval(createHeart, 300);
 
-       // } 
       </script>
 </body>
 </html>
